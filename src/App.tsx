@@ -44,6 +44,14 @@ function App() {
     );
   };
 
+  const handleEditTodo = (id: number, newText: string) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, text: newText } : todo
+      )
+    );
+  };
+
   const getFilteredTodos = () => {
     switch (filter) {
       case 'active':
@@ -72,6 +80,7 @@ function App() {
           todos={filteredTodos}
           onToggle={handleToggleTodo}
           onDelete={handleDeleteTodo}
+          onEdit={handleEditTodo}
         />
         <div className='total-todo'>
           <p>Total todos: {todos.length} | Showing: {filteredTodos.length}</p>
